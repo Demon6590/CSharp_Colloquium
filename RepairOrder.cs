@@ -55,9 +55,9 @@ public class RepairOrder : IRepairable
     public RepairOrder(int id, Client client, Device device, string issueDescription)
     {
         Id = id;
-        Client = client ?? throw new ArgumentNullException(nameof(client));
-        Device = device ?? throw new ArgumentNullException(nameof(device));
-        Device.IssueDescription = issueDescription ?? throw new ArgumentNullException(nameof(issueDescription));
+        Client = client;
+        Device = device;
+        Device.IssueDescription = issueDescription;
         ReceivedDate = DateTime.Now;
         Status = RepairStatus.Received;
     }
@@ -138,7 +138,7 @@ public class RepairOrder : IRepairable
     /// <exception cref="InvalidOperationException">заказ завершён</exception>
     public bool AssignEngineer(Engineer engineer)
     {
-        if (engineer == null || !engineer.CanRepair(Device))
+        if (!engineer.CanRepair(Device))
             return false;
         
         if (Status == RepairStatus.Issued || Status == RepairStatus.Rejected)
@@ -152,19 +152,19 @@ public class RepairOrder : IRepairable
     /// <summary>
     /// Проводит диагностику
     /// </summary>
-    public void Diagnose()
+    public string Diagnose()
     {
         if (Status != RepairStatus.Received)
             throw new InvalidOperationException("Диагностику можно провести только для принятых заказов");
         
         Status = RepairStatus.Diagnostics;
-        Console.WriteLine($"Диагностика заказа #{Id} ({Device.Brand} {Device.Model}) начата");
+        return $"Диагностика заказа #{Id} ({Device.Brand} {Device.Model}) начата";
     }
     
     /// <summary>
     /// Выполняет ремонт
     /// </summary>
-    public void Repair()
+    public string Repair()
     {
         if (Engineer == null)
             throw new InvalidOperationException("Для ремонта требуется назначенный инженер");
@@ -173,6 +173,7 @@ public class RepairOrder : IRepairable
             throw new InvalidOperationException("Ремонт можно начать только после диагностики");
         
         Status = RepairStatus.InProgress;
-        Console.WriteLine($"Ремонт заказа №{Id} начата инженером {Engineer.FirstName} {Engineer.LastName} {Engineer.Patronymic}");
+        
+        return $"Ремонт заказа №{Id} начата инженером {Engineer.FirstName} {Engineer.LastName} {Engineer.Patronymic}";
     }
 }

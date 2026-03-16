@@ -5,9 +5,9 @@ namespace Workshop;
 public enum DeviceType
 
 {
-    Ноутбук,
-    Смартфон,
-    Планшет,
-    Монитор,
-    Принтер
+    Laptop,
+    Smartphone,
+    Tablet,
+    Monitor,
+    Printer
 }

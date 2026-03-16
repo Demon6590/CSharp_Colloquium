@@ -11,13 +11,13 @@ public class Laptop : Device
         string issueDescription,DeviceType deviceType, string processor) 
         : base(id, brand, model, serialNumber, issueDescription, deviceType)
     {
-        Processor = processor ?? throw new ArgumentNullException(nameof(processor));
+        Processor = processor;
     }
     public override string GetDeviceType()
     {
         return DeviceType.ToString();
     }
 
-    public override string PrintInfo() => 
-        $"{Brand}, {Model}, {SerialNumber}, {IssueDescription}, {DeviceType} {Processor}";
+    public override string ToString() => 
+        $"{Brand},{Model},{SerialNumber},{IssueDescription},{DeviceType},{Processor}";
 }

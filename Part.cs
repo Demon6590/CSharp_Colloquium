@@ -46,17 +46,11 @@ public class Part
     public Part(int id, string name, string article, decimal purchasePrice,decimal sellingPrice, int quantityInStock = 0)
     {
         Id = id;
-        Name = name ?? throw new ArgumentNullException(nameof(name));
-        Article = article ?? throw new ArgumentNullException(nameof(article));
-        PurchasePrice = purchasePrice >= 0
-            ? purchasePrice
-            : throw new ArgumentException("Закупочная цена не может быть отрицательной");
-        SellingPrice = sellingPrice >= 0
-            ? sellingPrice
-            : throw new ArgumentException("Продажная цена не может быть отрицательной");
-        QuantityInStock = quantityInStock >= 0
-            ? quantityInStock
-            : throw new ArgumentException("Количество не может быть отрицательным");
+        Name = name;
+        Article = article;
+        PurchasePrice = purchasePrice;
+        SellingPrice = sellingPrice;
+        QuantityInStock = quantityInStock;
     }
 
 

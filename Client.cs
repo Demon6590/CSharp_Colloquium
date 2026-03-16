@@ -17,10 +17,11 @@ public class Client
     /// Имя клиента
     /// </summary>
     public string FirstName { get; }
+
     /// <summary>
     /// Отчество клиента
     /// </summary>
-    public string Patronymic { get; }
+    public string? Patronymic { get; } = "";
 
     /// <summary>
     /// Телефон клиента
@@ -44,11 +45,10 @@ public class Client
     public Client(int id, string lastName,string firstName,string patronymic, string phone, string email)
     {
         Id = id;
-        LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
-        FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
-        Patronymic = patronymic ?? throw new ArgumentNullException(nameof(patronymic));
-        
-        Phone = phone ?? throw new ArgumentNullException(nameof(phone));
-        Email = email ?? throw new ArgumentNullException(nameof(email));
+        LastName = lastName;
+        FirstName = firstName;
+        Patronymic = patronymic;
+        Phone = phone;
+        Email = email;
     }
 }

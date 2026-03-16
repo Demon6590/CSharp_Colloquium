@@ -30,9 +30,7 @@ public class Service
     public Service(int id, string name, decimal price)
     {
         Id = id;
-        Name = name ?? throw new ArgumentNullException(nameof(name));
-        Price = price >= 0 
-            ? price 
-            : throw new ArgumentException("Цена не может быть отрицательной");
+        Name = name;
+        Price = price;
     }
 }

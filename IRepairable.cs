@@ -8,10 +8,10 @@ public interface IRepairable
     /// <summary>
     /// Проводит диагностику
     /// </summary>
-    void Diagnose();
+    string Diagnose();
     
     /// <summary>
     /// Выполняет ремонт
     /// </summary>
-    void Repair();
+    string Repair();
 }

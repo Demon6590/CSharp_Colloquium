@@ -12,14 +12,14 @@ public class Smartphone : Device
         string issueDescription,DeviceType deviceType, string operatingSystem) 
         : base(id, brand, model, serialNumber, issueDescription,deviceType)
     {
-        OperatingSystem = operatingSystem ?? throw new ArgumentNullException(nameof(operatingSystem));
+        OperatingSystem = operatingSystem;
     }
     public override string GetDeviceType()
     {
         return DeviceType.ToString();
     }
 
-    public override string PrintInfo()=>
-        $"{Brand}, {Model}, {SerialNumber}, {IssueDescription}, {DeviceType} {OperatingSystem}";
+    public override string ToString()=>
+        $"{Brand},{Model},{SerialNumber},{IssueDescription},{DeviceType},{OperatingSystem}";
     
 }

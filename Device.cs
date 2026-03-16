@@ -48,10 +48,10 @@ public abstract class Device
     protected Device(int id, string brand, string model, string serialNumber, string issueDescription, DeviceType deviceType)
     {
         Id = id;
-        Brand = brand ?? throw new ArgumentNullException(nameof(brand));
-        Model = model ?? throw new ArgumentNullException(nameof(model));
-        SerialNumber = serialNumber ?? throw new ArgumentNullException(nameof(serialNumber));
-        IssueDescription = issueDescription ?? throw new ArgumentNullException(nameof(issueDescription));
+        Brand = brand;
+        Model = model ;
+        SerialNumber = serialNumber ;
+        IssueDescription = issueDescription;
         DeviceType = deviceType;
     }
     /// <summary>
@@ -63,6 +63,6 @@ public abstract class Device
     /// <summary>
     /// Выводит полную информацию об устройстве в консоль
     /// </summary>
-    public virtual string PrintInfo() =>
-        $"{Brand}, {Model}, {SerialNumber}, {IssueDescription}, {DeviceType}";
+    public virtual string ToString() =>
+        $"{Brand},{Model},{SerialNumber},{IssueDescription},{DeviceType}";
 }

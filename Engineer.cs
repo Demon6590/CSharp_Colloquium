@@ -42,10 +42,10 @@ public class Engineer
     /// </exception>
     public Engineer(int id, string lastName,string firstName,string patronymic, List<DeviceType> specialization){
         Id = id;
-        LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
-        FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
-        Patronymic = patronymic ?? throw new ArgumentNullException(nameof(patronymic));
-        Specialization = specialization ?? throw new ArgumentNullException(nameof(specialization));
+        LastName = lastName;
+        FirstName = firstName;
+        Patronymic = patronymic;
+        Specialization = specialization;
     }
     /// <summary>
     /// Проверяет, может ли инженер ремонтировать конкретное устройство

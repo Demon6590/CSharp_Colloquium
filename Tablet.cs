@@ -10,16 +10,14 @@ public class Tablet:Device
         string issueDescription, DeviceType deviceType,double screenSize) 
         : base(id, brand, model, serialNumber, issueDescription,deviceType)
     {
-        ScreenSize = screenSize > 0 
-            ? screenSize 
-            : throw new ArgumentException("Размер экрана должен быть положительным");
+        ScreenSize = screenSize;
     }
     public override string GetDeviceType()
     {
         return DeviceType.ToString();
     }
-    public override string PrintInfo()=>
-        $"{Brand}, {Model}, {SerialNumber}, {IssueDescription}, {DeviceType} {ScreenSize}";
+    public override string ToString()=>
+        $"{Brand},{Model},{SerialNumber},{IssueDescription},{DeviceType},{ScreenSize}";
 
 }
 
